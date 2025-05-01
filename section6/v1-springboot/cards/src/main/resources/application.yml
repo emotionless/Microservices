@@ -14,3 +14,22 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+  profiles:
+    active:
+      - "dev"
+
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to EazyBank cards related Dev APIs "
+  contactDetails:
+    name: "Smitha Ray - Dev Lead"
+    email: "smitha@eazybank.com"
+  onCallSupport:
+    - (666) 369-4321
+    - (666) 963-6358

@@ -170,7 +170,9 @@ public class AccountsController {
     })
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildVersion() {
-        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
     }
 
     @GetMapping("/env-info")
