@@ -1,6 +1,9 @@
 server:
   port: 8090
 spring:
+  application:
+    name: "loans"
+
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -15,18 +18,4 @@ spring:
       ddl-auto: update
     show-sql: true
   config:
-    import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-
-build:
-  version: "1.0"
-
-loans:
-  message: "Welcome to EazyBank loans related Dev APIs "
-  contactDetails:
-    name: "Smitha Ray - Dev Lead"
-    email: "smitha@eazybank.com"
-  onCallSupport:
-    - (666) 369-3659
-    - (125) 987-6358
+    import: "optional:configserver:http://localhost:8071/"
