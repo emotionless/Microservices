@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to EazyBank loans related Prod APIs "
+  contactDetails:
+    name: "Smitha Ray - Prod Lead"
+    email: "smitha@eazybank.com"
+  onCallSupport:
+    - (678) 544-4715
+    - (852) 987-3214
