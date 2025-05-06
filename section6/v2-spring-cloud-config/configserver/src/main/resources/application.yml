@@ -25,7 +25,8 @@ spring:
             AAAEDKD69DMpnb6haP/avyVMjlLDxQpHAZnjaRIsPplfeESy6W5//92ZUYM6Rsoecqw1b6
             f0HAP+O22rjVzH7+x7sBAAAAEmZhcnVrQGZhcnVrLXVidW50dQECAw===
             -----END OPENSSH PRIVATE KEY-----
-
+encrypt:
+  key: "LKSDFSDAF6S568SDHFGJ54FODF6D24GHLKSUYS545454GS"
           # native:
           # search-locations: "classpath:/config"
           # search-locations: "file:///home//faruk//Documents//config"
