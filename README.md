@@ -1,4 +1,4 @@
-## Microservices - It is fun!
+## Microservices - It is fun
 ## Topics covered in the course
 * Section 1 - Introduction to Microservices Architecture
 * Section 2- Building microservices using Spring Boot
