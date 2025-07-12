@@ -41,6 +41,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -105,7 +109,7 @@
 				<version>3.4.5</version>
 				<configuration>
 					<to>
-						<image>hudaipena/${project.artifactId}:s6</image>
+						<image>hudaipena/${project.artifactId}:s8</image>
 					</to>
 				</configuration>
 			</plugin>
