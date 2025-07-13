@@ -66,6 +66,16 @@ services:
       service: microservice-eurekaserver-config
     environment:
       SPRING_APPLICATION_NAME: "cards"
+  cards-02:
+    image: "hudaipena/cards:s8"
+    container_name: cards-ms-02
+    ports:
+      - "9001:9000"
+    extends:
+      file: common-config.yml
+      service: microservice-eurekaserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "cards"
 
 networks:
   eazybank:
