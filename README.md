@@ -20,4 +20,3 @@
 * Section 18 - Deploying microservices into cloud K8s cluster
 * Section 19 - Introduction to K8s Ingress, Service Mesh (Istio) & mTLS
 * Section 20 - Congratulations & Thank You
-
