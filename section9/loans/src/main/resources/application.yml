@@ -50,3 +50,9 @@ info:
     name: "loans"
     description: "Eazy Bank Loan Service"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        loans: DEBUG
