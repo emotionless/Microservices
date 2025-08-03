@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    # active: native
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          # uri: "https://github.com/emotionless/microservice-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+           # username: "emotionless"
+           # password: "supersecret"
+          uri: git@github.com:emotionless/microservice-config.git
+          ignoreLocalSshSettings: true
+          private-key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACAuluf//dmVGDOkbKHnKsNW+n9BwD/jttq41cx+/se7AQAAAJjCcoa8wnKG
+            vAAAAAtzc2gtZWQyNTUxOQAAACAuluf//dmVGDOkbKHnKsNW+n9BwD/jttq41cx+/se7AQ
+            AAAEDKD69DMpnb6haP/avyVMjlLDxQpHAZnjaRIsPplfeESy6W5//92ZUYM6Rsoecqw1b6
+            f0HAP+O22rjVzH7+x7sBAAAAEmZhcnVrQGZhcnVrLXVidW50dQECAw===
+            -----END OPENSSH PRIVATE KEY-----
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+encrypt:
+  key: "LKSDFSDAF6S568SDHFGJ54FODF6D24GHLKSUYS545454GS"
+          # native:
+          # search-locations: "classpath:/config"
+          # search-locations: "file:///home//faruk//Documents//config"
+
+server:
+  port: 8071
+
