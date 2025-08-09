@@ -26,6 +26,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeoutException;
+
 @Tag(
         name = "CRUD REST APIs for Accounts in EazyBank",
         description = "CRUD REST APIs for Accounts in EazyBank to CREATE, UPDATE, FETCH and DELETE accounts details"
@@ -175,12 +177,11 @@ public class AccountsController {
     })
     @Retry(name= "getBuildVersionInfo", fallbackMethod = "getBuildVersionInfoFallback")
     @GetMapping("/build-info")
-    public ResponseEntity<String> getBuildVersion() {
+    public ResponseEntity<String> getBuildVersion() throws TimeoutException {
         logger.debug("Invoked Accounts build-info API");
-        throw new NullPointerException();
-//        return ResponseEntity
-//                .status(HttpStatus.OK)
-//                .body(buildVersion);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(buildVersion);
     }
 
     public ResponseEntity<String> getBuildVersionInfoFallback(Throwable throwable) {
