@@ -81,7 +81,7 @@ services:
       service: network-deploy-service
 
   prometheus:
-    image: prom/prometheus:v2.45.0
+    image: prom/prometheus:v3.1.0
     ports:
       - "9090:9090"
     volumes:
@@ -102,7 +102,6 @@ services:
       - sh
       - -euc
       - |
-        EOF
         /run.sh
     ports:
       - "3000:3000"
