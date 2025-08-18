@@ -3,6 +3,7 @@ apiVersion: 1
 deleteDatasources:
     - name: Loki
     - name: Prometheus
+    - name: Tempo
 
 datasources:
   - name: Prometheus
@@ -31,3 +32,13 @@ datasources:
       httpHeaderName1: "X-Scope-OrgID"
     secureJsonData:
       httpHeaderValue1: "tenant1"
+  - name: Tempo
+    type: tempo
+    uid: tempo
+    url: http://tempo:3100
+    access: proxy
+    orgId: 1
+    basicAuth: false
+    isDefault: false
+    version: 1
+    editable: true

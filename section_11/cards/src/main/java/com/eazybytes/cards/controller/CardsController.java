@@ -104,7 +104,9 @@ public class CardsController {
                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                      String mobileNumber) {
         logger.debug("eazyBank-correlation-id found in fetchCardDetails: {}", correlationId);
+        logger.debug("fetchCardDetails started");
         CardsDto cardsDto = iCardsService.fetchCard(mobileNumber);
+        logger.debug("fetchCardDetails ended");
         return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
     }
 
