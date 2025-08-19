@@ -30,6 +30,11 @@ datasources:
     editable: true
     jsonData:
       httpHeaderName1: "X-Scope-OrgID"
+      derivedFields:
+        - datasourceUid: tempo
+          matcherRegex: "\\[.+,(.+),.+\\]"
+          name: TraceID
+          url: '$${__value.raw}'
     secureJsonData:
       httpHeaderValue1: "tenant1"
   - name: Tempo
