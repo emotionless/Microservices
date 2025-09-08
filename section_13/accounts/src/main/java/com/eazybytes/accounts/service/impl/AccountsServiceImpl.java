@@ -2,6 +2,7 @@ package com.eazybytes.accounts.service.impl;
 
 import com.eazybytes.accounts.constants.AccountsConstants;
 import com.eazybytes.accounts.dto.AccountsDto;
+import com.eazybytes.accounts.dto.AccountsMsgDto;
 import com.eazybytes.accounts.dto.CustomerDto;
 import com.eazybytes.accounts.entity.Accounts;
 import com.eazybytes.accounts.entity.Customer;
@@ -13,6 +14,9 @@ import com.eazybytes.accounts.repository.AccountsRepository;
 import com.eazybytes.accounts.repository.CustomerRepository;
 import com.eazybytes.accounts.service.IAccountsService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,8 +26,11 @@ import java.util.Random;
 @Service
 @AllArgsConstructor
 public class AccountsServiceImpl implements IAccountsService {
+    private static final Logger logger = LoggerFactory.getLogger(AccountsServiceImpl.class);
+
     private CustomerRepository customerRepository;
     private AccountsRepository accountsRepository;
+    private final StreamBridge streamBridge;
     /**
      * @param customerDto
      */
@@ -36,7 +43,15 @@ public class AccountsServiceImpl implements IAccountsService {
         }
         Customer savedCustomer = customerRepository.save(customer);
         Accounts accounts = createNewAccount(savedCustomer);
-        accountsRepository.save(accounts);
+        Accounts savedAccount = accountsRepository.save(accounts);
+        sendCommunication(savedAccount, savedCustomer);
+    }
+
+    private void sendCommunication(Accounts account, Customer customer) {
+        var accountsMsgDto = new AccountsMsgDto(account.getAccountNumber(), customer.getName(), customer.getEmail(), customer.getMobileNumber());
+        logger.info("Sending Communication request for the details: {}", accountsMsgDto);
+        var result = streamBridge.send("sendCommunication-out-0", accountsMsgDto);
+        logger.info("Is the communication request successfully triggered? : {}", result);
     }
 
     /**
