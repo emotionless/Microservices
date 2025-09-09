@@ -121,7 +121,7 @@
 				<version>3.4.5</version>
 				<configuration>
 					<to>
-						<image>hudaipena/${project.artifactId}:s12</image>
+						<image>hudaipena/${project.artifactId}:s13</image>
 					</to>
 				</configuration>
 			</plugin>

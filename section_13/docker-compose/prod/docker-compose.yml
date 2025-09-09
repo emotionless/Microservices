@@ -1,4 +1,20 @@
 services:
+  rabbit:
+    image: rabbitmq:4.0-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.7
     container_name: keycloak
@@ -228,7 +244,7 @@ services:
       service: network-deploy-service
 
   configserver:
-    image: "hudaipena/configserver:s12"
+    image: "hudaipena/configserver:s13"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -245,7 +261,7 @@ services:
       OTEL_SERVICE_NAME: "configserver"
 
   eurekaserver:
-    image: "hudaipena/eurekaserver:s12"
+    image: "hudaipena/eurekaserver:s13"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -266,7 +282,7 @@ services:
       OTEL_SERVICE_NAME: "eurekaserver"
 
   accounts:
-    image: "hudaipena/accounts:s12"
+    image: "hudaipena/accounts:s13"
     container_name: accounts-ms
     healthcheck:
       test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
@@ -274,15 +290,19 @@ services:
       timeout: 5s
       retries: 20
       start_period: 20s
+    depends_on:
+      rabbit:
+        condition: service_healthy
     extends:
       file: common-config.yml
       service: microservice-eurekaserver-config
     environment:
       SPRING_APPLICATION_NAME: "accounts"
       OTEL_SERVICE_NAME: "accounts"
+      SPRING_RABBITMQ_HOST: "rabbit"
 
   loans:
-    image: "hudaipena/loans:s12"
+    image: "hudaipena/loans:s13"
     container_name: loans-ms
     healthcheck:
       test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
@@ -298,7 +318,7 @@ services:
       OTEL_SERVICE_NAME: "loans"
 
   cards:
-    image: "hudaipena/cards:s12"
+    image: "hudaipena/cards:s13"
     container_name: cards-ms
     healthcheck:
       test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
@@ -314,7 +334,7 @@ services:
       OTEL_SERVICE_NAME: "cards"
 
   gatewayserver:
-    image: "hudaipena/gatewayserver:s12"
+    image: "hudaipena/gatewayserver:s13"
     container_name: gatewayserver-ms
     ports:
       - "8072:8072"
@@ -332,6 +352,18 @@ services:
       SPRING_APPLICATION_NAME: "gatewayserver"
       OTEL_SERVICE_NAME: "gatewayserver"
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: "http://keycloak:8080/realms/master/protocol/openid-connect/certs"
+
+  message:
+    image: "hudaipena/message:s13"
+    container_name: message-ms
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    environment:
+      SPRING_RABBITMQ_HOST: "rabbit"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 networks:
   eazybank:
     driver: "bridge"
