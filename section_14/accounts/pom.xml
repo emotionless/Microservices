@@ -103,7 +103,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+            <artifactId>spring-cloud-stream-binder-kafka</artifactId>
         </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -132,7 +132,7 @@
 				<version>3.4.5</version>
 				<configuration>
 					<to>
-						<image>hudaipena/${project.artifactId}:s13</image>
+						<image>hudaipena/${project.artifactId}:s14</image>
 					</to>
 				</configuration>
 			</plugin>
