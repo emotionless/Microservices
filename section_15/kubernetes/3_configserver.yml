@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: configserver
-        image: hudaipena/configserver:s14
+        image: hudaipena/configserver:s12
         ports:
         - containerPort: 8071
 ---
