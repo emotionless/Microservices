@@ -1,7 +1,7 @@
 package com.eazybytes.loans.controller;
 
+import com.eazybytes.dto.common.ErrorResponseDto;
 import com.eazybytes.loans.constants.LoansConstants;
-import com.eazybytes.loans.dto.ErrorResponseDto;
 import com.eazybytes.loans.dto.LoansDto;
 import com.eazybytes.loans.dto.LoansInfoDto;
 import com.eazybytes.loans.dto.ResponseDto;
@@ -14,7 +14,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
