@@ -1,8 +1,8 @@
 package com.eazybytes.accounts.controller;
 
 import com.eazybytes.accounts.dto.CustomerDetailsDto;
-import com.eazybytes.accounts.dto.ErrorResponseDto;
 import com.eazybytes.accounts.service.ICustomersService;
+import com.eazybytes.dto.common.ErrorResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
