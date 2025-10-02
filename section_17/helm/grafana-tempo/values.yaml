@@ -680,7 +680,7 @@ distributor:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -694,7 +694,7 @@ distributor:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1056,7 +1056,7 @@ metricsGenerator:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1070,7 +1070,7 @@ metricsGenerator:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1467,7 +1467,7 @@ ingester:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1481,7 +1481,7 @@ ingester:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1883,7 +1883,7 @@ querier:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -1897,7 +1897,7 @@ querier:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -2257,7 +2257,7 @@ queryFrontend:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -2271,7 +2271,7 @@ queryFrontend:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -2545,7 +2545,7 @@ queryFrontend:
     livenessProbe:
       enabled: true
       failureThreshold: 3
-      initialDelaySeconds: 10
+      initialDelaySeconds: 80
       periodSeconds: 10
       successThreshold: 1
       timeoutSeconds: 1
@@ -2559,7 +2559,7 @@ queryFrontend:
     readinessProbe:
       enabled: true
       failureThreshold: 3
-      initialDelaySeconds: 10
+      initialDelaySeconds: 80
       periodSeconds: 10
       successThreshold: 1
       timeoutSeconds: 1
@@ -2837,7 +2837,7 @@ vulture:
   livenessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1
@@ -2851,7 +2851,7 @@ vulture:
   readinessProbe:
     enabled: true
     failureThreshold: 3
-    initialDelaySeconds: 10
+    initialDelaySeconds: 80
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 1

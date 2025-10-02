@@ -1259,9 +1259,9 @@ defaultInitContainers:
 postgresql:
   enabled: true
   auth:
-    postgresPassword: ""
+    postgresPassword: "wQpcKMpCAs"
     username: bn_keycloak
-    password: ""
+    password: "vA46VIlFVB"
     database: bitnami_keycloak
     existingSecret: ""
     secretKeys:
